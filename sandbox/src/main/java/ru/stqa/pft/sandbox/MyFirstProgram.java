@@ -12,11 +12,11 @@ public class MyFirstProgram {
 
 		Point p1 = new Point(2,2);
 		Point p2 = new Point(4,1);
-		System.out.println("Расстояние между точкой (2,2) и (4,1) = " + p1.distance(p1, p2));
+		System.out.println("Расстояние между точкой (2,2) и (4,1) = " + p1.distance(p2));
 
 		Point p3 = new Point(1,-2);
 		Point p4 = new Point(2, -2);
-		System.out.println("Расстояние между точкой (1,2) и (2,2) = " + p3.distance(p3, p4));
+		System.out.println("Расстояние между точкой (1,2) и (2,2) = " + p3.distance(p4));
 	}
 
 
