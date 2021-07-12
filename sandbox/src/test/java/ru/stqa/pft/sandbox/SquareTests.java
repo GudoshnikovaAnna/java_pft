@@ -29,20 +29,20 @@ public class SquareTests {
     public void testPointDistancePositive3() {
         Point p1 = new Point(0,2);
         Point p2 = new Point(4,-2);
-        Assert.assertEquals( p1.distance(p2), Math.sqrt(32), "Расстояние между точкой (0,-2) и (4,-2) считается неверно");
+        Assert.assertEquals( p1.distance(p2), Math.sqrt(32), "Расстояние между точкой (0,2) и (4,-2) считается неверно");
     }
 
     @Test
     public void testPointDistancePositive4() {
         Point p1 = new Point(7,4);
         Point p2 = new Point(-5,-4);
-        Assert.assertEquals( p1.distance(p2), Math.sqrt(208), "Расстояние между точкой (0,-2) и (4,-2) считается неверно");
+        Assert.assertEquals( p1.distance(p2), Math.sqrt(208), "Расстояние между точкой (7,4) и (-5,-4) считается неверно");
     }
 
     @Test
     public void testPointDistancePositive5() {
         Point p1 = new Point(-7,-4);
         Point p2 = new Point(-5,-4);
-        Assert.assertEquals( p1.distance(p2), 2.0, "Расстояние между точкой (0,-2) и (4,-2) считается неверно");
+        Assert.assertEquals( p1.distance(p2), 2.0, "Расстояние между точкой (-7,-4) и (-5,-4) считается неверно");
     }
 }
