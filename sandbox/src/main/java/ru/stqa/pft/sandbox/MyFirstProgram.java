@@ -16,10 +16,7 @@ public class MyFirstProgram {
 
 		Point p3 = new Point(1,-2);
 		Point p4 = new Point(2, -2);
-		System.out.println("Расстояние между точкой (1,2) и (2,2) = " + p3.distance(p4));
+		System.out.println("Расстояние между точкой (1,-2) и (2,-2) = " + p3.distance(p4));
 	}
-
-
-
 
 }
