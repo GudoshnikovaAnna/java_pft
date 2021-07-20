@@ -4,37 +4,26 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class ContactHelper {
-    private WebDriver wd;
+public class ContactHelper extends HelperBase{
 
     public ContactHelper(WebDriver wd) {
-        this.wd = wd;
+         super(wd);
     }
 
     public void returnToContactPage() {
-       wd.findElement(By.linkText("home page")).click();
+       click(By.linkText("home page"));
     }
 
     public void submitContact() {
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+        click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
     public void fillContactPage(ContactData contactData) {
-        wd.findElement(By.name("firstname")).click();
-        wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys(contactData.getContactFirstName());
-        wd.findElement(By.name("lastname")).click();
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(contactData.getContactLastName());
-        wd.findElement(By.name("nickname")).click();
-        wd.findElement(By.name("company")).click();
-        wd.findElement(By.name("company")).clear();
-        wd.findElement(By.name("company")).sendKeys(contactData.getContactCompany());
-        wd.findElement(By.name("address")).click();
-        wd.findElement(By.name("address")).clear();
-        wd.findElement(By.name("address")).sendKeys(contactData.getContactAddress());
-        wd.findElement(By.name("email")).click();
-        wd.findElement(By.name("email")).clear();
-        wd.findElement(By.name("email")).sendKeys(contactData.getContactEmail());
+        type(By.name("firstname"),contactData.getContactFirstName());
+        type(By.name("lastname"),contactData.getContactLastName());
+        type(By.name("company"),contactData.getContactCompany());
+        type(By.name("address"),contactData.getContactAddress());
+        type(By.name("email"),contactData.getContactEmail());
+
     }
 }
