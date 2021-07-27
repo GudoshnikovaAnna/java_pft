@@ -10,7 +10,7 @@ public class ContactModificationTests extends TestBase {
         app.getNavigationHelper().gotoAllContactsPage();
         app.getContactHelper().selectContact();
         app.getContactHelper().initContactModification();
-        app.getContactHelper().fillContactPage(new ContactData("Steve", "Jobes", "Apple", "California 1", "steve.jobes@apple.com"));
+        app.getContactHelper().fillContactPage(new ContactData("Steve", "Jobes", "Apple", "California 1", "steve.jobes@apple.com", null), false);
         app.getContactHelper().submitContactModification();
         app.getContactHelper().returnToContactPage();;
     }
