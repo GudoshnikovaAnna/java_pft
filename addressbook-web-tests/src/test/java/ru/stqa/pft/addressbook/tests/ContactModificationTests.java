@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase {
     @Test
     public void testContactModification() {
         app.goTo().groupPage();
-        if (!app.group().isThereAGroup()) {
+        if (app.group().all().size() == 0) {
             app.group().create(new GroupData().withName("test1"));
         }
         app.goTo().gotoAllContactsPage();
