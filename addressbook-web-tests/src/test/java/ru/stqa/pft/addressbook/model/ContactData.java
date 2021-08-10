@@ -7,14 +7,61 @@ public class ContactData {
     private String contactCompany;
     private String contactAddress;
     private String contactEmail;
+    private String contactEmail2;
+    private String contactEmail3;
     private String group;
     private String homePhone;
     private String mobilePhone;
     private String workPhone;
+    private String allPhones;
+    private String allEmails;
+
+    public String getContactEmail2() {
+        return contactEmail2;
+    }
+
+    public ContactData withEmail2(String contactEmail2) {
+        this.contactEmail2 = contactEmail2;
+        return this;
+    }
+
+    public String getContactEmail3() {
+        return contactEmail3;
+    }
+
+    public ContactData withEmail3(String contactEmail3) {
+        this.contactEmail3 = contactEmail3;
+        return this;
+    }
+
 
     public ContactData withId(int id) {
         this.id = id;
         return this;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
+    public void setAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+    }
+
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
+    }
+    public String getAllEmails() {
+        return allEmails;
+    }
+    public String getAddress() {
+        return contactAddress;
+    }
+
+    public void setAllEmails(String allEmails) {
+        this.allEmails = allEmails;
     }
 
     public ContactData withFirstName(String name) {
@@ -82,12 +129,20 @@ public class ContactData {
     public String getContactEmail() {
         return contactEmail;
     }
+
     public String getContactWorkPhone() {
         return workPhone;
     }
+
     public String getContactHomePhone() {
         return homePhone;
     }
+
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+
     public String getContactMobilePhone() {
         return mobilePhone;
     }
@@ -100,7 +155,9 @@ public class ContactData {
         this.id = id;
     }
 
-    public int getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -131,7 +188,6 @@ public class ContactData {
                 ", contactLastName='" + contactLastName + '\'' +
                 '}';
     }
-
 
 
 }
