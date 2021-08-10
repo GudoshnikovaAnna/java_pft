@@ -1,37 +1,43 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-import java.util.Comparator;
-import java.util.List;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class ContactCreationTests extends TestBase{
 
-    @Test
-    public void testContactCreationTests()  {
+    @BeforeMethod
+    public void ensurePreconditions() {
         app.goTo().groupPage();
         if (app.group().all().size() == 0) {
             app.group().create(new GroupData().withName("test1"));
         }
-        app.goTo().gotoAllContactsPage();
-        List<ContactData> before = app.getContactHelper().getContactList();
-        app.goTo().gotoContactAddPage();
-        ContactData contact = new ContactData("Alla", "Pugacheva", "GalkinCompany", "villige Gryazi", "alla.pugacheva@galkin.com", "test1");
-        app.getContactHelper().createContact(contact);
-        app.goTo().gotoAllContactsPage();
-        List<ContactData> after = app.getContactHelper().getContactList();
-        Assert.assertEquals(after.size(), before.size() + 1);
+    }
 
-        contact.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
-        before.add(contact);
-        Comparator<? super ContactData> byId = (o1, o2) -> Integer.compare(o1.getId(), o2. getId());
-        before.sort(byId);
-        after.sort(byId);
-        Assert.assertEquals(before, after);
-
+    @Test
+    public void testContactCreationTests()  {
+        app.goTo().gotoAllContactsPage();
+        Contacts before = app.contact().all();
+        ContactData contact = new ContactData()
+                .withFirstName("Alla")
+                .withLastName("Pugacheva")
+                .withCompany("GalkinCompany")
+                .withAddress("villige Gryazi")
+                .withEmail("alla.pugacheva@galkin.com")
+                .withGroup("test1");
+        app.contact().createContact(contact);
+        app.goTo().gotoAllContactsPage();
+        Contacts after = app.contact().all();
+        assertEquals(after.size(), before.size() + 1);
+        assertThat(after, equalTo(
+                before.withAdded(
+                        contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
     }
 
 }

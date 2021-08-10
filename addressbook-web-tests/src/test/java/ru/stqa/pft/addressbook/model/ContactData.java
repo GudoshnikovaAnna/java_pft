@@ -1,29 +1,49 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-    private int id;
-    private final String contactFirstName;
-    private final String contactLastName;
+    private int id = Integer.MAX_VALUE;
+    private String contactFirstName;
+    private String contactLastName;
     private String contactCompany;
     private String contactAddress;
     private String contactEmail;
     private String group;
 
-    public ContactData(String contactFirstName, String contactLastName, String contactCompany, String contactAddress, String contactEmail, String group) {
-        this.contactFirstName = contactFirstName;
-        this.contactLastName = contactLastName;
-        this.contactCompany = contactCompany;
-        this.contactAddress = contactAddress;
-        this.contactEmail = contactEmail;
-        this.group = group;
-        this.id = Integer.MAX_VALUE;
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
     }
 
-    public ContactData(int id, String contactFirstName, String contactLastName) {
-        this.contactFirstName = contactFirstName;
-        this.contactLastName = contactLastName;
-        this.id = id;
+    public ContactData withFirstName(String name) {
+        this.contactFirstName = name;
+        return this;
     }
+
+    public ContactData withLastName(String name) {
+        this.contactLastName = name;
+        return this;
+    }
+
+    public ContactData withCompany(String name) {
+        this.contactCompany = name;
+        return this;
+    }
+
+    public ContactData withAddress(String name) {
+        this.contactAddress = name;
+        return this;
+    }
+
+    public ContactData withEmail(String name) {
+        this.contactEmail = name;
+        return this;
+    }
+
+    public ContactData withGroup(String name) {
+        this.group = name;
+        return this;
+    }
+
 
     public String getContactFirstName() {
         return contactFirstName;
@@ -53,9 +73,7 @@ public class ContactData {
         this.id = id;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     @Override
     public boolean equals(Object o) {
