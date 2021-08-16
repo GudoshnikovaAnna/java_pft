@@ -4,20 +4,23 @@
     "contactLastName": "TestLastname 0",
     "contactCompany": "TestCompany 0",
     "contactAddress": "TestAddress 0",
-    "contactEmail": "testemail0@test.com"
+    "contactEmail": "testemail0@test.com",
+    "group": "test1"
   },
   {
     "contactFirstName": "TestFirstName 1",
     "contactLastName": "TestLastname 1",
     "contactCompany": "TestCompany 1",
     "contactAddress": "TestAddress 1",
-    "contactEmail": "testemail1@test.com"
+    "contactEmail": "testemail1@test.com",
+    "group": "test1"
   },
   {
     "contactFirstName": "TestFirstName 2",
     "contactLastName": "TestLastname 2",
     "contactCompany": "TestCompany 2",
     "contactAddress": "TestAddress 2",
-    "contactEmail": "testemail2@test.com"
+    "contactEmail": "testemail2@test.com",
+    "group": "test1"
   }
 ]
