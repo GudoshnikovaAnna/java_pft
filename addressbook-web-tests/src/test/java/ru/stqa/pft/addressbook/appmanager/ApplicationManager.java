@@ -23,7 +23,7 @@ public class ApplicationManager {
     private ContactHelper contactHelper;
     private String browser;
 
-    private final Properties properties;
+    public final Properties properties;
 
     public ApplicationManager(String browser)  {
         this.browser = browser;
