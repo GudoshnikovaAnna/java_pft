@@ -26,3 +26,6 @@ sandbox/build/scripts/sandbox.bat
 sandbox/build/test-results/test/binary/output.bin.idx
 sandbox/build/tmp/compileJava/source-classes-mapping.txt
 sandbox/build/tmp/compileTestJava/source-classes-mapping.txt
+.idea/codeStyles/Project.xml
+.idea/codeStyles/codeStyleConfig.xml
+.idea/codeStyles/codeStyleConfig.xml
