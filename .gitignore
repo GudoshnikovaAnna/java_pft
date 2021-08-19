@@ -30,3 +30,7 @@ sandbox/build/tmp/compileTestJava/source-classes-mapping.txt
 .idea/codeStyles/codeStyleConfig.xml
 .idea/codeStyles/codeStyleConfig.xml
 addressbook-web-tests/build/tmp/testContacts/jar_extract_17207571899827043019_tmp
+*.html
+*.idx
+*.log
+addressbook-web-tests/build/resources/test/local.properties
