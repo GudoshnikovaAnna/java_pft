@@ -29,7 +29,4 @@ public class GroupDeletionTests extends TestBase {
         Groups after = app.group().all();
         assertThat(after, equalTo(before.withoutAdded(deletedGroup)));
     }
-
-
-
 }
