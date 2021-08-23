@@ -232,7 +232,13 @@ public class ContactData {
         if (id != that.id) return false;
         if (contactFirstName != null ? !contactFirstName.equals(that.contactFirstName) : that.contactFirstName != null)
             return false;
-        return contactLastName != null ? contactLastName.equals(that.contactLastName) : that.contactLastName == null;
+        if (contactLastName != null ? !contactLastName.equals(that.contactLastName) : that.contactLastName != null)
+            return false;
+        if (contactCompany != null ? !contactCompany.equals(that.contactCompany) : that.contactCompany != null)
+            return false;
+        if (contactAddress != null ? !contactAddress.equals(that.contactAddress) : that.contactAddress != null)
+            return false;
+        return contactEmail != null ? contactEmail.equals(that.contactEmail) : that.contactEmail == null;
     }
 
     @Override
@@ -240,6 +246,9 @@ public class ContactData {
         int result = id;
         result = 31 * result + (contactFirstName != null ? contactFirstName.hashCode() : 0);
         result = 31 * result + (contactLastName != null ? contactLastName.hashCode() : 0);
+        result = 31 * result + (contactCompany != null ? contactCompany.hashCode() : 0);
+        result = 31 * result + (contactAddress != null ? contactAddress.hashCode() : 0);
+        result = 31 * result + (contactEmail != null ? contactEmail.hashCode() : 0);
         return result;
     }
 
@@ -249,6 +258,10 @@ public class ContactData {
                 "id=" + id +
                 ", contactFirstName='" + contactFirstName + '\'' +
                 ", contactLastName='" + contactLastName + '\'' +
+                ", contactCompany='" + contactCompany + '\'' +
+                ", contactAddress='" + contactAddress + '\'' +
+                ", contactEmail='" + contactEmail + '\'' +
+                ", group='" + group + '\'' +
                 '}';
     }
 
