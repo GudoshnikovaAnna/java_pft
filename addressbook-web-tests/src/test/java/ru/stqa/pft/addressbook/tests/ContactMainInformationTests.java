@@ -28,7 +28,7 @@ public class ContactMainInformationTests extends TestBase {
                     .withAddress("villige Gryazi")
                     .withEmail("alla.pugacheva@galkin.com")
                     .withEmail3("maxim.galkin@galkin.com")
-                    .withGroup("test1")
+                    //.withGroup("test1")
                     .withWorkPhone("676 89 98")
                     .withHomePhone("33-33-33")
                     .withMobilePhone("+7 9345674738"));

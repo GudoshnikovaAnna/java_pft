@@ -72,8 +72,8 @@ public class ContactDataGenerator {
                     .withLastName(String.format("TestLastname %s", i))
                     .withAddress(String.format("TestAddress %s", i))
                     .withCompany(String.format("TestCompany %s", i))
-                    .withEmail(String.format("testemail%s@test.com", i))
-                    .withGroup("test1"));
+                    .withEmail(String.format("testemail%s@test.com", i)));
+                    //.withGroup("test1"));
         }
         return contacts;
     }

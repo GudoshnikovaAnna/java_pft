@@ -28,8 +28,8 @@ public class ContactModificationTests extends TestBase {
                         .withLastName("Pugacheva")
                         .withCompany("GalkinCompany")
                         .withAddress("villige Gryazi")
-                        .withEmail("alla.pugacheva@galkin.com")
-                        .withGroup("test1"));
+                        .withEmail("alla.pugacheva@galkin.com"));
+                        //.withGroup("test1"));
             }
         }
     }

@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +47,10 @@ public class ContactHelper extends HelperBase {
         attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+            if (contactData.getGroups().size() > 0) {
+                Assert.assertTrue(contactData.getGroups().size() == 1);
+                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+            }
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
@@ -130,6 +135,23 @@ public class ContactHelper extends HelperBase {
         returnToContactPage();
     }
 
+    public void addInGroup(ContactData contact, GroupData group) {
+        selectContactById(contact.getId());
+        selectGroupByIdOnMainPage(group.getId());
+        submitAddContactToGroup();
+    }
+
+    public void addContactInGroup(GroupData addedGroup, ContactData newContact) {
+        addInGroup(newContact, addedGroup);
+        checkAdditionCompleted();
+    }
+
+
+
+    public void checkAdditionCompleted() {
+        Assert.assertTrue(wd.findElement(By.xpath("//div[@id='content']/div[@class='msgbox']")).getText().contains("Users added"));
+    }
+
     public ContactData infoFromEditForm(ContactData contact) {
         initContactModificationById(contact.getId());
         String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
@@ -153,5 +175,45 @@ public class ContactHelper extends HelperBase {
                 .withHomePhone(home)
                 .withMobilePhone(mobile)
                 .withWorkPhone(work);
+    }
+
+    private void selectGroupByIdOnMainPage(int id) {
+        wd.findElement(By.xpath("//select[@name='to_group']/option[@value='" + id + "']")).click();
+    }
+
+    private void submitAddContactToGroup() {
+        wd.findElement(By.xpath("//input[@name='add']")).click();
+    }
+
+    private void selectGroupOnMainPage(GroupData group) {
+        wd.findElement(By.xpath("//select[@name='group']/option[@value='" + group.getId() + "']")).click();
+    }
+    private void checkContactVisibleInGroup(ContactData contact) {
+        wd.findElement(By.xpath("//input[@id='" + contact.getId() +"']")).isDisplayed();
+    }
+    public void checkContactInGroup (ContactData contact, GroupData group) {
+        selectGroupOnMainPage(group);
+        checkContactVisibleInGroup(contact);
+    }
+
+    public void selectGroupView(GroupData group) {
+        wd.findElement(By.xpath("//select[@name='group']/option[@value='"+group.getId() +"']")).click();
+    }
+
+    public void deleteContactFromGroup(ContactData contact, GroupData deleteGroup) {
+        wd.findElement(By.name("remove")).click();
+    }
+
+    public void checkDeletionCompleted() {
+        Assert.assertTrue(wd.findElement(By.xpath("//div[@id='content']/div[@class='msgbox']")).getText().contains("Users removed."));
+    }
+
+    public void checkContactNotInGroup (ContactData contact, GroupData group) {
+        selectGroupOnMainPage(group);
+        Assert.assertTrue(checkContactNotVisibleInGroup(contact));
+    }
+
+    private boolean checkContactNotVisibleInGroup(ContactData contact) {
+        return wd.findElements(By.xpath("//input[@id='" + contact.getId() + "']")).isEmpty();
     }
 }

@@ -5,6 +5,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "addressbook")
@@ -44,9 +46,6 @@ public class ContactData {
     @Type(type = "text")
     private String contactEmail3;
 
-    @Expose
-    @Transient
-    private String group;
 
     @Column(name = "home")
     @Type(type = "text")
@@ -69,6 +68,28 @@ public class ContactData {
     @Column(name = "photo")
     @Type(type = "text")
     private String photo;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "address_in_groups"
+            , joinColumns = @JoinColumn(name = "id")
+            , inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id=" + id +
+                ", contactFirstName='" + contactFirstName + '\'' +
+                ", contactLastName='" + contactLastName + '\'' +
+                ", contactCompany='" + contactCompany + '\'' +
+                ", contactAddress='" + contactAddress + '\'' +
+                ", contactEmail='" + contactEmail + '\'' +
+                '}';
+    }
+
+    public Groups getGroups() {
+        return new Groups(groups);
+    }
 
     public File getPhoto() {
         return new File(photo);
@@ -167,11 +188,6 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withGroup(String name) {
-        this.group = name;
-        return this;
-    }
-
 
     public String getContactFirstName() {
         return contactFirstName;
@@ -205,13 +221,8 @@ public class ContactData {
         return allPhones;
     }
 
-
     public String getContactMobilePhone() {
         return mobilePhone;
-    }
-
-    public String getGroup() {
-        return group;
     }
 
     public void setId(int id) {
@@ -234,11 +245,7 @@ public class ContactData {
             return false;
         if (contactLastName != null ? !contactLastName.equals(that.contactLastName) : that.contactLastName != null)
             return false;
-        if (contactCompany != null ? !contactCompany.equals(that.contactCompany) : that.contactCompany != null)
-            return false;
-        if (contactAddress != null ? !contactAddress.equals(that.contactAddress) : that.contactAddress != null)
-            return false;
-        return contactEmail != null ? contactEmail.equals(that.contactEmail) : that.contactEmail == null;
+        return contactAddress != null ? contactAddress.equals(that.contactAddress) : that.contactAddress == null;
     }
 
     @Override
@@ -246,24 +253,12 @@ public class ContactData {
         int result = id;
         result = 31 * result + (contactFirstName != null ? contactFirstName.hashCode() : 0);
         result = 31 * result + (contactLastName != null ? contactLastName.hashCode() : 0);
-        result = 31 * result + (contactCompany != null ? contactCompany.hashCode() : 0);
         result = 31 * result + (contactAddress != null ? contactAddress.hashCode() : 0);
-        result = 31 * result + (contactEmail != null ? contactEmail.hashCode() : 0);
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "id=" + id +
-                ", contactFirstName='" + contactFirstName + '\'' +
-                ", contactLastName='" + contactLastName + '\'' +
-                ", contactCompany='" + contactCompany + '\'' +
-                ", contactAddress='" + contactAddress + '\'' +
-                ", contactEmail='" + contactEmail + '\'' +
-                ", group='" + group + '\'' +
-                '}';
+    public ContactData inGroup(GroupData group) {
+        groups.add(group);
+        return this;
     }
-
-
 }
