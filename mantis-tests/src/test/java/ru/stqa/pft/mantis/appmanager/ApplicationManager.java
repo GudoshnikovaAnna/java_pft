@@ -43,5 +43,4 @@ public class ApplicationManager {
         wd.findElement(By.linkText("Logout")).click();
         wd.quit();
     }
-
 }
