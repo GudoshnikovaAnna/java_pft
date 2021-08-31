@@ -13,32 +13,16 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 *.class
-sandbox/build/distributions/sandbox.tar
-sandbox/build/distributions/sandbox.zip
-sandbox/build/libs/sandbox.jar
-sandbox/build/reports/tests/test/css/base-style.css
-sandbox/build/reports/tests/test/css/style.css
-sandbox/build/reports/tests/test/index.html
-sandbox/build/reports/tests/test/js/report.js
-sandbox/build/scripts/sandbox
-sandbox/build/scripts/sandbox.bat
+sandbox/build/
 *.bin
-sandbox/build/test-results/test/binary/output.bin.idx
-sandbox/build/tmp/compileJava/source-classes-mapping.txt
-sandbox/build/tmp/compileTestJava/source-classes-mapping.txt
 .idea/codeStyles/Project.xml
 .idea/codeStyles/codeStyleConfig.xml
 .idea/codeStyles/codeStyleConfig.xml
-addressbook-web-tests/build/tmp/testContacts/jar_extract_17207571899827043019_tmp
+addressbook-web-tests/build/tmp/
 *.html
 *.idx
 *.log
 addressbook-web-tests/build/
 addressbook-web-tests/build/resources/test/local.properties
 sandbox/build/tmp/jar/MANIFEST.MF
-mantis-tests/build/reports/tests/test/css/base-style.css
-mantis-tests/build/reports/tests/test/css/style.css
-mantis-tests/build/reports/tests/test/js/report.js
-mantis-tests/build/resources/test/local.properties
-mantis-tests/build/test-results/test/TEST-ru.stqa.pft.mantis.tests.LoginTests.xml
-mantis-tests/build/tmp/compileTestJava/source-classes-mapping.txt
+mantis-tests/build/

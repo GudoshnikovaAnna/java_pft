@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
+import ru.stqa.pft.mantis.tests.FtpHelper;
 
 import java.io.File;
 import java.io.FileReader;
@@ -18,11 +19,12 @@ public class ApplicationManager {
     private String browser;
     public final Properties properties;
     private RegistrationHelper registrationHelper;
+    private FtpHelper ftp;
 
-    public ApplicationManager(String browser)  {
+    public ApplicationManager(String browser) {
         this.browser = browser;
         properties = new Properties();
-       }
+    }
 
     public void init() throws IOException {
         String target = System.getProperty("target", "local");
@@ -38,12 +40,19 @@ public class ApplicationManager {
     }
 
     public String getProperty(String key) {
-       return properties.getProperty(key);
+        return properties.getProperty(key);
     }
 
     public RegistrationHelper registration() {
         if (registrationHelper == null) registrationHelper = new RegistrationHelper(this);
         return registrationHelper;
+    }
+
+    public FtpHelper ftp() {
+        if (ftp == null) {
+            return ftp = new FtpHelper(this);
+        }
+        return ftp;
     }
 
     public WebDriver getDriver() {
