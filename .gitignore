@@ -26,3 +26,4 @@ addressbook-web-tests/build/
 addressbook-web-tests/build/resources/test/local.properties
 sandbox/build/tmp/jar/MANIFEST.MF
 mantis-tests/build/
+soap-sample/build/
