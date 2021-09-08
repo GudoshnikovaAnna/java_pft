@@ -27,3 +27,12 @@ addressbook-web-tests/build/resources/test/local.properties
 sandbox/build/tmp/jar/MANIFEST.MF
 mantis-tests/build/
 soap-sample/build/
+addressbook-web-tests/build/resources/test/contacts.json
+addressbook-web-tests/src/test/resources/contacts.json
+.idea/vcs.xml
+.idea/libraries-with-intellij-classes.xml
+.idea/jarRepositories.xml
+.idea/gradle.xml
+.idea/encodings.xml
+.idea/gradle.xml
+.idea/vcs.xml
