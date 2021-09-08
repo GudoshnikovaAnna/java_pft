@@ -89,4 +89,19 @@ public class SoapHelper {
         }
         return new HashSet<>(issues);
     }
+    public void updateDescription(int issueId, String description) throws MalformedURLException, ServiceException, RemoteException {
+        MantisConnectPortType mc = getMantisConnect();
+        IssueData issueData = mc.mc_issue_get(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"), BigInteger.valueOf(issueId));
+       /* Issue updateIssue = new Issue()
+                .withId(issueData.getId().intValue())
+                .withDescription(issueData.getDescription())
+                .withSummary(issueData.getSummary())
+                .withProject(new Project()
+                        .withId(issueData.getProject().getId().intValue())
+                        .withName(issueData.getProject().getName()))
+                .withResolution(issueData.getResolution().getName());*/
+        issueData.setDescription(description);
+        mc.mc_issue_update(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"), BigInteger.valueOf(issueId), issueData);
+
+    }
 }

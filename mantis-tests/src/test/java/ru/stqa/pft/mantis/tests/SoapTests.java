@@ -44,5 +44,8 @@ public class SoapTests extends TestBase{
         System.out.println("ID= " + issue.getId());
         skipIfNotFixed(issue.getId());
         System.out.println("выполняется код автотеста");
+        app.soap().updateDescription(issue.getId(), "Update description");
+        Issue updateIssue = app.soap().getIssue(issue.getId());
+        Assert.assertEquals(updateIssue.getDescription(), "Update description");
     }
 }
