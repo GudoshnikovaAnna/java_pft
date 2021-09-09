@@ -4,6 +4,10 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     implementation 'org.testng:testng:6.9.10'
     implementation 'com.google.code.gson:gson:2.8.7'
