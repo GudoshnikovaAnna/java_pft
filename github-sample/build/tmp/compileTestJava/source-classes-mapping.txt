@@ -1,0 +1,2 @@
+ru/stqa/pft/github/GithubTests.java
+ ru.stqa.pft.github.GithubTests
