@@ -36,3 +36,4 @@ addressbook-web-tests/src/test/resources/contacts.json
 .idea/encodings.xml
 .idea/gradle.xml
 .idea/vcs.xml
+addressbook-web-tests/build/reports/tests/testContacts/classes/ru.stqa.pft.addressbook.tests.ContactCreationTests.html
